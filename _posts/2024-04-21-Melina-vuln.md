@@ -103,7 +103,7 @@ Vamos detalhar a funcionalidade de cada uma das propriedades do YAML header util
 
 ```
 ---
-title: Pentest 2024 Q1
+title: Pentest Teste
 author: 
 date: \LARGE 04 de Março de 2024
 subject: Markdown
@@ -129,7 +129,7 @@ toc-own-page: true
 
 Alguns nomes são auto explicativos, mas vamos por partes se não vou parecer uma geladeira.
 
-- **title**: Define o título principal do documento. Por exemplo, "Pentest 2024 Q1" é claro e informativo.
+- **title**: Define o título principal do documento. Por exemplo, "Pentest Teste" é claro e informativo.
 
 - **author**: Aqui você inseriria o nome ou os nomes dos autores do documento.
 
