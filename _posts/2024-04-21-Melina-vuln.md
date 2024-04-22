@@ -6,7 +6,7 @@ tags: [Pentest, Relatorio, estudo]
 alt: "Report"
 ---
 
-![Melina](img/posts/Melina.png)
+![Melina](/img/posts/Melina.png)
 
 # Introdução
 
