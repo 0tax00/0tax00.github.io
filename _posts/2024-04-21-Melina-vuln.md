@@ -400,7 +400,7 @@ Um template de relatório de pentest bem projetado é crucial para a comunicaç�
     
     Exemplo de descrição de riscos:
 
-![REFERÊNCIA À CLASSIFICAÇÃO DE RISCO](/img/posts/me-011.png)
+![REFERÊNCIA À CLASSIFICAÇÃO DE RISCO](/img/posts/me-012.png)
 
 Essas seções estruturadas garantem que o relatório seja informativo, direto e útil para todas as partes interessadas, permitindo decisões informadas e rápidas sobre a segurança da organização.
 ## Relatório Técnico 
