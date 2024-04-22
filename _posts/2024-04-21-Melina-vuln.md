@@ -6,6 +6,8 @@ tags: [Pentest, Relatorio, estudo]
 alt: "Report"
 ---
 
+![charmander](https://media.tenor.com/V6BlTNHiHiAAAAAC/lofi-hiphop.gif)
+
 # Introdução
 
 Olá, pessoal! Espero que todos estejam bem.
