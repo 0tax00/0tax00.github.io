@@ -337,6 +337,10 @@ Após o upload ser bem-sucedido:
 
 Este processo não só simplifica a manipulação de documentos grandes e complexos, mas também ajuda a manter a integridade do formato e do conteúdo ao ser transferido para outros usuários ou plataformas.
 
+![Melina](/template/Melina.gif)
+
+Template: [template.md](/template/template.md)
+
 # Estrutura e Sugestões para Preencher o Template de Relatório de Pentest
 
 Um template de relatório de pentest bem projetado é crucial para a comunicação eficaz dos resultados de um teste de segurança. A seguir, detalho os principais componentes do template e como cada seção pode ser abordada para garantir clareza e precisão.
