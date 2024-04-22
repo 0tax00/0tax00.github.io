@@ -46,7 +46,7 @@ sudo docker run -d -p 80:80 otax03/melina:latest /bin/bash
 
 Após a configuração, acesse a interface pelo navegador em `localhost:80` ou `127.0.0.1`.
 
-![[me-01.png]]
+![Melina tela inicial](/img/posts/me-01.png)
 
 ## Carregamento do Relatório
 
@@ -58,7 +58,7 @@ http://127.0.0.1/upload_relatorio
 
 Nesta página, você poderá fazer o upload do seu relatório seguindo o template fornecido. Aqui também é possível nomear o relatório conforme sua necessidade, facilitando sua organização e acesso posterior.
 
-![[me-02.png]]
+![Upload de relatório](/img/posts/me-02.png)
 
 ## Consulta de Relatórios
 
@@ -68,7 +68,7 @@ Para acessar os relatórios que você já gerou, visite:
 http://127.0.0.1/consulta_relatorios
 ```
 
-![[me-03.png]]
+![Consulta de Relatórios](/img/posts/me-03.png)
 
 Neste endereço, você poderá baixar os relatórios gerados, disponíveis em formato `.pdf`.
 
@@ -80,9 +80,10 @@ O banco de vulnerabilidades pode ser acessado em:
 http://127.0.0.1/vulnerabilities
 ```
 
-![[me-04.png]]
+![Gerenciamento de Vulnerabilidades](/img/posts/me-04.png)
 
 Aqui, você pode adicionar e consultar vulnerabilidades que foram identificadas. A ferramenta está sendo aprimorada para que possa atualizar automaticamente essas informações a partir de um repositório, minimizando a perda de dados importantes.
+
 # Explicando o Template utilizado na Ferramenta
 
 O uso da ferramenta é guiado por um template simples, baseado em arquivos Markdown (`.md`), como já mencionamos. Essa abordagem permite que a edição do relatório seja flexível e acessível através de qualquer editor de texto que suporte este formato. Aqui estão algumas opções populares que você pode considerar:
@@ -240,18 +241,19 @@ Estas tabelas são ideais para destacar visualmente as informações, usando cor
 
 - **`\end{tabular}`**: Encerra o ambiente de tabela.
 
-![[me-05.png]]
+![Tabelas com LaTeX](/img/posts/me-05.png)
 
 #### Tabelas Simples com Markdown
 
 Para informações menos complexas ou quando a simplicidade é preferível, o Markdown oferece uma maneira rápida e eficiente de criar tabelas. Por exemplo, na listagem de vulnerabilidades identificadas durante um teste:
 
 
-![[me-06.png]]
+![Tabelas Simples com Markdown](/img/posts/me-06.png)
 
 Aqui, a sintaxe LaTeX `\textcolor{yellow}{Média}` é incorporada diretamente na tabela Markdown para destacar a criticidade da vulnerabilidade, combinando a simplicidade do Markdown com a funcionalidade visual do LaTeX.
 
-![[me-07.png]]
+![Tabelas Simples com Markdown](/img/posts/me-07.png)
+
 ## Inserção de Imagens
 
 A sintaxe para adicionar imagens em um documento Markdown é simples, mas permite algumas personalizações úteis. Aqui está o formato básico e os elementos que você pode ajustar:
@@ -269,12 +271,13 @@ A sintaxe para adicionar imagens em um documento Markdown é simples, mas permit
 
 - **`{ width=80% }`**: Este é um atributo opcional que controla a largura da imagem dentro do documento. Especificar `width=80%` ajusta a imagem para ocupar 80% da largura da área de conteúdo disponível. Este ajuste é útil para garantir que a imagem se encaixe bem no layout do documento, especialmente em formatos como PDF onde o espaço é mais controlado.
 
-![[me-08.png]]
+![Inserção de Imagens](/img/posts/me-08.png)
+
 ## Incorporando Blocos de Código
 
 Para o bloco de código também é bem simples, aqui é utilizado a sintaxe do markdown e a magica é feita usando parte do pandoc.
 
-![[me-09.png]]
+![Incorporando Blocos de Código](/img/posts/me-09.png)
 
 **Identificador da Linguagem**: O primeiro passo é especificar a linguagem de programação do código que você está inserindo. Isso ajuda a destacar a sintaxe corretamente. No exemplo, `C` é usado como o identificador de linguagem para indicar que o código é em C.
 
@@ -286,7 +289,7 @@ Ao usar esses três elementos juntos, você pode inserir blocos de código no Ma
 
 Ao especificar `--highlight-style breezedark`, você está instruindo o Pandoc a aplicar esse estilo específico ao código fonte em seu arquivo Markdown durante a conversão para PDF. Isso ajuda a garantir que o código seja exibido de forma atraente e fácil de ler no PDF resultante.
 
-![[me-010.png]]
+![Blocos de Código](/img/posts/me-010.png)
 
 ## Adicionando Hiperlinks
 
@@ -337,6 +340,7 @@ Este processo não só simplifica a manipulação de documentos grandes e comple
 # Estrutura e Sugestões para Preencher o Template de Relatório de Pentest
 
 Um template de relatório de pentest bem projetado é crucial para a comunicação eficaz dos resultados de um teste de segurança. A seguir, detalho os principais componentes do template e como cada seção pode ser abordada para garantir clareza e precisão.
+
 ### 1. DECLARAÇÃO E RESPONSABILIDADE
 
 **Objetivo:** Estabelecer o contexto e a base legal para a realização do teste.
@@ -382,7 +386,7 @@ Um template de relatório de pentest bem projetado é crucial para a comunicaç�
     
     Exemplo de tabela:
 
-![[me-011.png]]
+![RESULTADO EXECUTIVO](/img/posts/me-011.png)
 
 ### 5. REFERÊNCIA À CLASSIFICAÇÃO DE RISCO
 
@@ -396,7 +400,7 @@ Um template de relatório de pentest bem projetado é crucial para a comunicaç�
     
     Exemplo de descrição de riscos:
 
-![[me-012.png]]
+![REFERÊNCIA À CLASSIFICAÇÃO DE RISCO](/img/posts/me-011.png)
 
 Essas seções estruturadas garantem que o relatório seja informativo, direto e útil para todas as partes interessadas, permitindo decisões informadas e rápidas sobre a segurança da organização.
 ## Relatório Técnico 
