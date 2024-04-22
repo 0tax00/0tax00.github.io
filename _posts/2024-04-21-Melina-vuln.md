@@ -1,17 +1,465 @@
 ---
-title: Exemplo Vuln
-date: 2023-03-12 01:00:00 -0300
+title: Melina - Ferramenta de Geração de Relatórios para Pentests
+date: 2024-04-21 01:00:00 -0300
 categories: [Estudos]
-tags: [teste, exemplo, estudo]
-alt: "Teste"
+tags: [Pentest, Relatorio, estudo]
+alt: "Report"
 ---
 
-![charmander](https://media.tenor.com/V6BlTNHiHiAAAAAC/lofi-hiphop.gif)
+# Introdução
 
-- [Este é um teste](#)
+Olá, pessoal! Espero que todos estejam bem.
 
-```yaml
+Há tempos, venho sentindo a necessidade de uma ferramenta que simplifique a criação de relatórios, seja para pentests ou outras finalidades. Confesso que não sou fã de utilizar o formato DOCX para isso, embora, em situações inevitáveis, tenhamos que recorrer a ele.
 
-key: id
+Durante a eWPTX em 2023, precisei entregar um relatório e me vi um tanto perdido, sem um modelo definido e uma maneira ágil de realizar a entrega, evitando o DOCX. Foi então que decidi criar meu próprio template, adaptando-o no LaTeX. No entanto, rapidamente percebi que era inviável gerar inúmeras linhas de código para pequenas modificações.
+
+Pesquisando, notei algumas ferramentas open source que automatizam a geração de relatórios, mas muitas delas são sobrecarregadas de funcionalidades pouco úteis ou dependentes de configurações complexas. Devido ao meu nível de ansiedade e falta de paciência para configurar ferramentas cuja documentação parece escrita por seres abissais, decidi criar algo que fosse simples e atendesse às minhas necessidades.
+
+Assim nasceu a Melina, inspirada nas inúmeras vezes que joguei Elden Ring enquanto tentava concluir este projeto. A Melina é uma ferramenta simples que integra Markdown com LaTeX, funcionando como uma interface que facilita parte do processo. Digo parte, porque nem tudo são flores.
+
+O procedimento é simples: você constrói seu conteúdo em um arquivo Markdown, adiciona as imagens necessárias, faz o upload no sistema, e, voilà, o relatório em PDF está pronto, como por mágica.
+
+Espero que essa ferramenta possa ajudar outros que enfrentam os mesmos desafios que eu ao redigir relatórios técnicos.
+
+# Instalação
+
+Vamos a um guia prático de como utilizar a ferramenta Melina.
+
+## Configuração Inicial
+
+Primeiro, você precisará configurar o ambiente. Você pode construir a imagem Docker localmente ou puxá-la diretamente do Docker Hub. Abaixo estão os comandos necessários para começar:
+
+```sh
+git clone https://github.com/0tax00/Melina.git
+cd Melina
+sudo docker build -t melina .
+```
+
+Ou, se preferir usar uma imagem pré-fabricada:
+
+```sh
+sudo docker run -d -p 80:80 otax03/melina:latest /bin/bash
+```
+
+Após a configuração, acesse a interface pelo navegador em `localhost:80` ou `127.0.0.1`.
+
+![[me-01.png]]
+
+## Carregamento do Relatório
+
+Para carregar seu relatório, navegue até:
+
+```url
+http://127.0.0.1/upload_relatorio
+```
+
+Nesta página, você poderá fazer o upload do seu relatório seguindo o template fornecido. Aqui também é possível nomear o relatório conforme sua necessidade, facilitando sua organização e acesso posterior.
+
+![[me-02.png]]
+
+## Consulta de Relatórios
+
+Para acessar os relatórios que você já gerou, visite:
+
+```url
+http://127.0.0.1/consulta_relatorios
+```
+
+![[me-03.png]]
+
+Neste endereço, você poderá baixar os relatórios gerados, disponíveis em formato `.pdf`.
+
+## Gerenciamento de Vulnerabilidades
+
+O banco de vulnerabilidades pode ser acessado em:
+
+```url
+http://127.0.0.1/vulnerabilities
+```
+
+![[me-04.png]]
+
+Aqui, você pode adicionar e consultar vulnerabilidades que foram identificadas. A ferramenta está sendo aprimorada para que possa atualizar automaticamente essas informações a partir de um repositório, minimizando a perda de dados importantes.
+# Explicando o Template utilizado na Ferramenta
+
+O uso da ferramenta é guiado por um template simples, baseado em arquivos Markdown (`.md`), como já mencionamos. Essa abordagem permite que a edição do relatório seja flexível e acessível através de qualquer editor de texto que suporte este formato. Aqui estão algumas opções populares que você pode considerar:
+
+- **Notepad++**
+- **Obsidian**
+- **Vim**
+- **Nano**
+
+#### Integração com o Template Eisvogel
+
+Para os relatórios em Markdown, usamos também o template [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template), um popular template LaTeX que pode ser utilizado através do Pandoc para converter documentos Markdown em PDFs elegantes e profissionais. Este template oferece uma variedade de opções de formatação e estilos, facilitando a criação de relatórios visualmente atraentes e bem estruturados.
+
+## Detalhamento das Propriedades
+
+Vamos detalhar a funcionalidade de cada uma das propriedades do YAML header utilizado no template para documentos Markdown, que será convertido em PDF. Essas propriedades configuram a aparência e a estrutura do documento final.
 
 ```
+---
+title: Pentest 2024 Q1
+author: 
+date: \LARGE 04 de Março de 2024
+subject: Markdown
+keywords:
+  - Markdown
+  - Example
+subtitle: xpto
+lang: en
+titlepage: true
+titlepage-color: 0D3380
+titlepage-text-color: FFFFFF
+titlepage-rule-color: FFFFFF
+titlepage-rule-height: 2
+header-right: \textbf{xpto}
+header-left: \textcolor{red}{\textbf{CONFIDENCIAL}}
+book: true
+classoption: oneside
+code-block-font-size: \scriptsize
+toc-own-page: true
+---
+\listoffigures
+```
+
+Alguns nomes são auto explicativos, mas vamos por partes se não vou parecer uma geladeira.
+
+- **title**: Define o título principal do documento. Por exemplo, "Pentest 2024 Q1" é claro e informativo.
+
+- **author**: Aqui você inseriria o nome ou os nomes dos autores do documento.
+
+- **date**: A data de publicação ou criação do documento, formatada de forma visível.
+
+- **subject**: O assunto principal do documento. Ajuda na organização de documentos por tema.
+
+- **keywords**: Lista de palavras-chave que descrevem o conteúdo do documento, útil para busca e indexação.
+
+- **subtitle**: Um sub-título adicional para fornecer mais detalhes ou especificar uma seção do relatório.
+
+- **lang**: Define o idioma do documento. É recomendável manter em inglês ("en") para evitar problemas de compatibilidade com o template LaTeX.
+
+- **titlepage**: Booleano que, quando verdadeiro, indica a inclusão de uma página de título separada.
+
+- **titlepage-color**: A cor de fundo da página de título. Aqui está definida como `0D3380`, um azul marinho.
+
+- **titlepage-text-color**: A cor do texto na página de título, aqui sendo `FFFFFF`, que é branco.
+
+- **titlepage-rule-color**: Cor da linha decorativa na página de título, também branca (`FFFFFF`).
+
+- **titlepage-rule-height**: Define a espessura da linha decorativa na página de título, neste caso, `2`.
+
+- **header-right**: Conteúdo personalizado para o cabeçalho direito em todas as páginas, como uma marca ou tema do documento.
+
+- **header-left**: Conteúdo personalizado para o cabeçalho esquerdo, aqui indicado como "CONFIDENCIAL" e colorido de vermelho para destacar a importância.
+
+- **book**: Quando verdadeiro, formata o documento no estilo de um livro, o que pode afetar a margem e layout.
+
+- **classoption**: Opções de classe para a formatação LaTeX. "oneside" significa que as margens são as mesmas em todas as páginas, típico de relatórios.
+
+- **code-block-font-size**: Define o tamanho da fonte para blocos de código, aqui como `scriptsize`, pequeno mas legível.
+
+- **toc-own-page**: Quando verdadeiro, coloca a tabela de conteúdos em sua própria página, o que é útil para documentos mais longos.
+
+- **\listoffigures**: Inclui automaticamente uma lista de figuras utilizadas no documento.
+
+Essas configurações são essenciais para personalizar o documento conforme as necessidades específicas do projeto ou relatório.
+
+## Organização de Cabeçalhos no Documento Markdown
+
+Ao criar um documento no formato Markdown com o objetivo de convertê-lo em PDF usando o template Eisvogel, a estruturação dos cabeçalhos é fundamental para garantir a clareza e a organização do conteúdo. Vamos explorar como os cabeçalhos de primeiro e segundo níveis são tratados e como utilizá-los efetivamente no seu relatório.
+
+### Cabeçalhos H1
+
+Cabeçalhos de primeiro nível (`#`) são utilizados para denotar as principais seções do documento. No contexto do seu template e da configuração do Pandoc com Eisvogel, estes cabeçalhos automaticamente começam em uma nova página, o que é ideal para separar claramente as grandes seções do relatório, como:
+
+
+```md
+# DECLARAÇÃO E RESPONSABILIDADE
+
+# Sumário Executivo
+
+# Relatório Técnico
+```
+
+Essa separação ajuda a evitar a confusão e melhora a navegabilidade do documento, especialmente em relatórios longos ou complexos. Cada uma dessas seções principais iniciará em uma nova página, facilitando a referência e a leitura.
+
+### Cabeçalhos H2
+
+Os cabeçalhos de segundo nível (`##`) seguem a mesma regra dos H1 no que diz respeito ao início em novas páginas. Eles são ideais para subdividir as seções maiores em subseções mais gerenciáveis, o que é especialmente útil para detalhar aspectos técnicos ou categorizar informações dentro de uma mesma seção maior. Exemplos incluem:
+
+```md
+## Escopo do Teste
+
+## Resultado Executivo
+
+## Referência à Classificação de Risco
+
+## Vulnerabilidades
+```
+
+Usar o H2 para começar uma nova página para cada subseção ajuda a manter o documento organizado e impede que diferentes tópicos se misturem, o que pode confundir o leitor. Isso é particularmente útil para separar e destacar diferentes vulnerabilidades ou resultados dentro do relatório.
+## Sintaxe para Tabelas no Template Misturando Markdown e LaTeX
+
+Ao criar documentos técnicos, especialmente relatórios de pentest, a capacidade de detalhar informações de maneira clara e visualmente diferenciada é crucial. O uso combinado de Markdown e LaTeX oferece uma flexibilidade notável para essa finalidade. Abaixo, exploraremos como misturar essas duas linguagens para criar tabelas simples e avançadas dentro do mesmo documento.
+## Tabelas com LaTeX
+
+Como já discutido, as tabelas criadas com LaTeX permitem uma personalização profunda, adequadas para seções críticas do relatório como "Resultado Executivo" ou "Referência à Classificação de Risco". A estrutura e a sintaxe para criar uma dessas tabelas é como segue:
+
+```md
+\begin{tabular}{|>{\centering\arraybackslash}p{10cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+    \hline
+    \cellcolor{gray!80} Vulnerabilidades  & \cellcolor{gray!80}  Criticidade & \cellcolor{gray!80}  CVSS \\
+    \hline
+    \cellcolor{yellow!80} Insecure Direct Object Reference (IDOR) - Upload de arquivos & \cellcolor{yellow!80}  Média & \cellcolor{yellow!80}  6.8 \\
+    \hline
+\end{tabular}
+```
+
+Estas tabelas são ideais para destacar visualmente as informações, usando cores e alinhamentos específicos para melhorar a legibilidade e a compreensão rápida das informações chave.
+#### Explicação dos Elementos
+
+- **`\begin{tabular}{...}`**: Este comando inicia o ambiente de tabela em LaTeX. Os parâmetros dentro das chaves `{}` especificam o alinhamento e a largura das colunas. Cada `p{...}` define uma coluna com uma largura fixa, e `>{\centering\arraybackslash}` ajusta o alinhamento para centralizado.
+
+- **`|`**: Cada barra vertical no parâmetro do ambiente `tabular` representa uma linha vertical entre as colunas.
+
+- **`>{\centering\arraybackslash}`**: Este comando é usado para centralizar o conteúdo dentro de uma coluna. O `\arraybackslash` é necessário para manter a funcionalidade de quebra de linha com `\\`.
+
+- **`p{...}`**: Define a largura de cada coluna; o valor dentro das chaves, como `10cm` ou `2cm`, especifica a largura.
+
+- **`&`**: Serve como um delimitador entre as células na mesma linha.
+
+- **`\hline`**: Insere uma linha horizontal que se estende por todas as colunas na tabela.
+
+- **`\cellcolor{...}`**: Altera a cor de fundo de uma célula específica. A cor é especificada dentro das chaves e pode ser customizada com uma variedade de opções (como `gray!80` para um cinza escuro).
+
+- **`\\`**: Indica o fim de uma linha dentro da tabela.
+
+- **`\end{tabular}`**: Encerra o ambiente de tabela.
+
+![[me-05.png]]
+
+#### Tabelas Simples com Markdown
+
+Para informações menos complexas ou quando a simplicidade é preferível, o Markdown oferece uma maneira rápida e eficiente de criar tabelas. Por exemplo, na listagem de vulnerabilidades identificadas durante um teste:
+
+
+![[me-06.png]]
+
+Aqui, a sintaxe LaTeX `\textcolor{yellow}{Média}` é incorporada diretamente na tabela Markdown para destacar a criticidade da vulnerabilidade, combinando a simplicidade do Markdown com a funcionalidade visual do LaTeX.
+
+![[me-07.png]]
+## Inserção de Imagens
+
+A sintaxe para adicionar imagens em um documento Markdown é simples, mas permite algumas personalizações úteis. Aqui está o formato básico e os elementos que você pode ajustar:
+
+
+```md
+![Legenda da imagem](referencia_da_img.png){ width=80% }
+```
+
+#### Descrição dos Elementos:
+
+- **`![Legenda da imagem]`**: Este é o texto alternativo ou a legenda da imagem, que será exibido abaixo da imagem no documento finalizado. É uma prática recomendada sempre incluir uma legenda para descrever a imagem, melhorando a acessibilidade e fornecendo contexto.
+
+- **`(referencia_da_img.png)`**: Este é o caminho para a imagem que você deseja incluir. O caminho pode ser relativo ao documento Markdown ou um URL absoluto, dependendo de onde a imagem está armazenada. Para simplificar o gerenciamento de arquivos, é recomendável manter as imagens no mesmo diretório do documento Markdown.
+
+- **`{ width=80% }`**: Este é um atributo opcional que controla a largura da imagem dentro do documento. Especificar `width=80%` ajusta a imagem para ocupar 80% da largura da área de conteúdo disponível. Este ajuste é útil para garantir que a imagem se encaixe bem no layout do documento, especialmente em formatos como PDF onde o espaço é mais controlado.
+
+![[me-08.png]]
+## Incorporando Blocos de Código
+
+Para o bloco de código também é bem simples, aqui é utilizado a sintaxe do markdown e a magica é feita usando parte do pandoc.
+
+![[me-09.png]]
+
+**Identificador da Linguagem**: O primeiro passo é especificar a linguagem de programação do código que você está inserindo. Isso ajuda a destacar a sintaxe corretamente. No exemplo, `C` é usado como o identificador de linguagem para indicar que o código é em C.
+
+**Delimitadores de Bloco**: Em seguida, você usa três crases para iniciar e encerrar o bloco de código. Estas são as delimitações de bloco de código no Markdown. No exemplo, as três crases são usadas antes e depois do bloco de código.
+
+**Conteúdo do Bloco de Código**: Dentro das delimitações de bloco, você insere o código real que deseja exibir e destacar. Este é o seu código em C. No exemplo, "seu codigo para o bloco de codigos" é apenas um marcador fictício para representar o conteúdo do bloco de código.
+
+Ao usar esses três elementos juntos, você pode inserir blocos de código no Markdown e garantir que sejam exibidos e formatados corretamente, e a magica do pandoc  que eu falei é o `--highlight-style breezedark` que é informado no código da Melina durante a compilação do markdown pra pdf.
+
+Ao especificar `--highlight-style breezedark`, você está instruindo o Pandoc a aplicar esse estilo específico ao código fonte em seu arquivo Markdown durante a conversão para PDF. Isso ajuda a garantir que o código seja exibido de forma atraente e fácil de ler no PDF resultante.
+
+![[me-010.png]]
+
+## Adicionando Hiperlinks
+
+A estrutura para adicionar um hiperlink em Markdown envolve duas partes principais: o texto de âncora e a URL de destino. Aqui está como você pode adicionar um link:
+
+```
+[texto teste](https://teste.teste.com)
+```
+
+- `[texto teste]`: Este é o texto de âncora, ou seja, o texto que será exibido no documento como o link clicável. No caso, é o"texto teste", que descreve o conteúdo do link.
+
+- `(https://teste.teste.com)`: Esta é a URL de destino do link. Quando alguém clicar no texto de âncora, será redirecionado para o endereço especificado. No seu caso, é "[https://https://teste.teste.com](https://https://teste.teste.com)".
+
+## Guia de Uso: Do Preparo ao Upload do Relatório
+
+#### 1. **Preparação do Documento Markdown**
+
+Complete seu documento `.md` com todas as informações necessárias. Isso inclui texto, cabeçalhos, tabelas, blocos de código, imagens e links. Certifique-se de que todas as informações estão corretas e que o documento está formatado adequadamente. Revisar o conteúdo para garantir clareza e precisão é crucial.
+
+#### 2. **Organização dos Arquivos**
+
+Para o relatório que contém imagens, é essencial que as imagens referenciadas no arquivo Markdown estejam no mesmo diretório que o arquivo `.md`. Isso garante que todas as referências de imagem funcionem corretamente e sejam exibidas no documento final.
+
+#### 3. **Criação do Arquivo ZIP**
+
+Após organizar o arquivo `.md` e as imagens correspondentes no mesmo diretório:
+
+- Selecione o arquivo Markdown e todas as imagens.
+- Crie um arquivo `.zip` contendo esses itens. Isso facilita o upload e garante que todos os componentes necessários do relatório estejam juntos.
+
+#### 4. **Upload do Arquivo ZIP**
+
+Com o arquivo `.zip` pronto, proceda da seguinte forma:
+
+- Acesse a seção de uploads da ferramenta Melina.
+- Faça o upload do arquivo `.zip` que você preparou. Certifique-se de que a conexão de internet está estável para evitar interrupções durante o upload.
+
+#### 5. **Download do Relatório**
+
+Após o upload ser bem-sucedido:
+
+- Vá para a seção "Relatórios" na ferramenta.
+- Localize seu relatório carregado na lista de arquivos disponíveis.
+- Faça o download do relatório para verificação ou distribuição.
+
+Este processo não só simplifica a manipulação de documentos grandes e complexos, mas também ajuda a manter a integridade do formato e do conteúdo ao ser transferido para outros usuários ou plataformas.
+
+# Estrutura e Sugestões para Preencher o Template de Relatório de Pentest
+
+Um template de relatório de pentest bem projetado é crucial para a comunicação eficaz dos resultados de um teste de segurança. A seguir, detalho os principais componentes do template e como cada seção pode ser abordada para garantir clareza e precisão.
+### 1. DECLARAÇÃO E RESPONSABILIDADE
+
+**Objetivo:** Estabelecer o contexto e a base legal para a realização do teste.
+
+**Como preencher:**
+
+- **Escopo do Teste:** Detalhe os sistemas, componentes de rede ou aplicações que foram incluídos no teste.
+- **Objetivos:** Clarifique o que o teste pretendeu avaliar, como identificação de vulnerabilidades ou avaliação de medidas de segurança.
+- **Limitações:** Descreva qualquer condição que possa ter limitado a extensão ou profundidade do teste.
+- **Responsabilidades:** Enumere as obrigações das partes envolvidas, incluindo a equipe de pentest e o cliente.
+- **Confidencialidade:** Destaque os acordos de confidencialidade para proteger informações sensíveis.
+
+### 2. SUMÁRIO EXECUTIVO
+
+**Objetivo:** Fornecer uma visão geral concisa e impactante dos resultados principais.
+
+**Como preencher:**
+
+- **Visão Geral do Escopo:** Resuma brevemente o que foi testado.
+- **Principais Descobertas:** Destaque as maiores vulnerabilidades e riscos identificados.
+- **Recomendações:** Sugira ações prioritárias para mitigação dos riscos descobertos.
+- **Decisões Estratégicas:** Forneça insights que possam ajudar os tomadores de decisão.
+
+### 3. ESCOPO DO TESTE
+
+**Objetivo:** Definir com precisão os limites do teste para esclarecer o que foi avaliado.
+
+**Como preencher:**
+
+- **Detalhes dos Sistemas:** Liste os sistemas e infraestruturas específicos examinados.
+- **Objetivos Específicos:** Detalhe os aspectos de segurança que o teste visava investigar.
+- **Limitações do Escopo:** Se aplicável, mencione áreas que não foram incluídas no teste.
+
+### 4. RESULTADO EXECUTIVO
+
+**Objetivo:** Apresentar os resultados de forma resumida, focando nas questões mais críticas.
+
+**Como preencher:**
+
+- **Introdução dos Resultados:** Comece com uma síntese das descobertas.
+    
+- **Tabela de Vulnerabilidades:** Utilize tabelas para listar vulnerabilidades, criticidade e ações recomendadas de forma clara.
+    
+    Exemplo de tabela:
+
+![[me-011.png]]
+
+### 5. REFERÊNCIA À CLASSIFICAÇÃO DE RISCO
+
+**Objetivo:** Explicar como as vulnerabilidades foram avaliadas em termos de risco.
+
+**Como preencher:**
+
+- **Critérios de Avaliação:** Descreva como os níveis de risco são determinados, incluindo fatores como gravidade e probabilidade de exploração.
+    
+- **Tabela de Classificação de Risco:** Forneça uma tabela ou uma lista que explique claramente os níveis de risco.
+    
+    Exemplo de descrição de riscos:
+
+![[me-012.png]]
+
+Essas seções estruturadas garantem que o relatório seja informativo, direto e útil para todas as partes interessadas, permitindo decisões informadas e rápidas sobre a segurança da organização.
+## Relatório Técnico 
+
+O relatório técnico é a seção mais detalhada do relatório de pentest, onde cada vulnerabilidade identificada é descrita com profundidade. A seguir, é apresentada uma estrutura detalhada sobre como organizar esta seção para garantir clareza, precisão e utilidade para as partes interessadas.
+
+#### Nome da Vulnerabilidade
+
+**Objetivo:** Nomear de forma clara e específica cada vulnerabilidade encontrada.
+
+**Como preencher:**
+
+- **Contextualização:** Nomeie cada vulnerabilidade de acordo com o contexto específico onde foi encontrada. Exemplos:
+    - Insecure Direct Object Reference (IDOR) - Upload de arquivos
+    - Insecure Direct Object Reference (IDOR) - Consulta de usuários
+
+Isso ajuda a distinguir vulnerabilidades semelhantes que ocorrem em contextos diferentes, facilitando o entendimento e a priorização das correções.
+#### Tabela de Informações
+
+**Objetivo:** Fornecer dados chave sobre cada vulnerabilidade de maneira estruturada.
+
+**Como preencher:**
+
+- **URL**: Inclua o link específico ou a localização onde a vulnerabilidade foi identificada.
+- **Ativos Afetados**: Liste os ativos específicos que são impactados pela vulnerabilidade.
+- **Severidade**: Classifique a gravidade da vulnerabilidade.
+- **CVSS**: Forneça o score CVSS e inclua um hyperlink para a explicação detalhada da pontuação.
+
+#### Descrição
+
+**Objetivo:** Descrever o que é a vulnerabilidade e como ela foi descoberta.
+
+**Como preencher:**
+
+- **Descrição Geral**: Forneça uma explicação sobre o que consiste a vulnerabilidade.
+- **Contexto de Descoberta**: Descreva de forma breve como e onde a vulnerabilidade foi identificada durante o teste.
+#### Prova de Conceito (POC)
+
+**Objetivo:** Mostrar como a vulnerabilidade pode ser explorada, de forma a facilitar a reprodução segura.
+
+**Como preencher:**
+
+- **Detalhamento do Método**: Explique passo a passo como a vulnerabilidade pode ser explorada.
+- **Ferramentas Utilizadas**: Liste as ferramentas usadas para descobrir e testar a vulnerabilidade.
+- **Códigos e Comandos**: Inclua blocos de código ou comandos utilizados, se relevante.
+- **Imagens e Legendas**: Adicione capturas de tela ou outras imagens relevantes com legendas explicativas.
+
+#### Impacto Corporativo, Impacto Técnico e Recomendações de Correção
+
+**Objetivo:** Avaliar os impactos potenciais da vulnerabilidade e sugerir medidas corretivas.
+
+**Como preencher:**
+
+- **Impacto Corporativo**: Discuta como a vulnerabilidade pode afetar a organização a nível operacional ou estratégico.
+- **Impacto Técnico**: Avalie as consequências técnicas da exploração da vulnerabilidade.
+- **Recomendações de Correção**: Forneça soluções específicas ou sugestões para mitigar a vulnerabilidade.
+
+#### Referências
+
+**Objetivo:** Oferecer fontes adicionais de informação para verificação e aprofundamento.
+
+**Como preencher:**
+
+- **Fontes Confiáveis**: Inclua links para documentações oficiais, artigos acadêmicos ou outras fontes reconhecidas que discutam a vulnerabilidade ou métodos de correção.
+
+### Considerações Finais
+
+Ao compilar esta seção do relatório de pentest, é crucial manter a objetividade e a precisão para que o documento sirva como um recurso confiável e prático para a tomada de decisões de segurança. Certifique-se de que todas as informações são verificáveis e claramente documentadas para facilitar o entendimento e a ação por parte dos responsáveis pela segurança da informação.
