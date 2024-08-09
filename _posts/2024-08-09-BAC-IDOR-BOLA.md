@@ -27,7 +27,7 @@ Para abordar essa questão, iniciaremos com uma introdução à OWASP (Open Worl
 O Open Worldwide Application Security Project (OWASP) é uma organização sem fins lucrativos que fornece recursos para melhorar a segurança de aplicações. Um de seus principais recursos é o OWASP Top 10, uma lista das principais vulnerabilidades de segurança em aplicações web, que ajuda desenvolvedores a identificar e mitigar riscos críticos.
 
 
-# OWASP Top 10
+## OWASP Top 10
 
 O OWASP Top 10 é atualizado geralmente a cada três ou quatro anos, refletindo as mudanças no cenário de segurança e as contribuições da comunidade global. Exemplos de edições incluem 2003, 2004, 2007, 2010, 2013, 2017 e 2021.
 
