@@ -19,6 +19,7 @@ Este artigo busca desmistifica as diferenças entre Insecure Direct Object Refer
 
 ## Qual a diferença entre IDOR, BAC e BOLA ? assunto complicado
 
+
 Esse é um daqueles assuntos que parece ter sido criado só para nos dar dor de cabeça. Explicar a diferença entre IDOR, BAC e BOLA é como tentar montar um quebra-cabeça sem saber se todas as peças estão na caixa. As informações estão espalhadas por aí como se fossem Pokémons, e nós temos que sair de **New Bark** para coletar várias insígnias nos GYMs antes de finalmente participar da Liga Pokémon da segurança cibernética.
 
 Para abordar essa questão, iniciaremos com uma introdução à OWASP (Open Worldwide Application Security Project), focando especificamente nas 10 vulnerabilidades mais críticas no cenário web. Em seguida, exploraremos o BAC (Broken Access Control), incluindo conceitos e exemplos de IDOR (Insecure Direct Object References) e BOLA (Broken Object Level Authorization).
