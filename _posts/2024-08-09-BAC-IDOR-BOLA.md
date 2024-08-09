@@ -66,7 +66,7 @@ IDOR ocorre quando invasores acessam ou alteram objetos manipulando identificado
 
 No aplicativo web **Toca do Mago**, ao interceptar uma requisição para modificar o idioma da plataforma, a seguinte URL foi observada:
 
-```
+```html
 /directory/1337/updatePreferredLocale?newLocale=Pt-Br
 ```
 
@@ -80,7 +80,7 @@ No aplicativo **Grand Line Navigator**, que permite aos mugiwaras gerenciar suas
 
 Imagine que o token JWT de um usuário chamado `Usopp` contém o seguinte payload:
 
-```
+```json
 {
   "userId": "101",
   "username": "Usopp",
@@ -90,7 +90,7 @@ Imagine que o token JWT de um usuário chamado `Usopp` contém o seguinte payloa
 
 Um atacante, após interceptar uma requisição que contém esse JWT, modifica o campo `userId` para o identificador de um usuário diferente, `Luffy`, alterando o token para:
 
-```
+```json
 {
   "userId": "102",
   "username": "Luffy",
@@ -116,7 +116,7 @@ Nesse cenário, ao acessar o menu de administradores, um gestor vê três usuár
 
 A aplicação permite que o gestor edite as permissões de outros gestores, mas não as de administradores. No entanto, ao interceptar e modificar a requisição HTTP com uma ferramenta como o Burp Suite, o gestor pode alterar a própria permissão para "owner" (administrador) simplesmente modificando o parâmetro "role" no corpo da requisição.
 
-```
+```json
 { "fullName": "Ciclano", "role": "owner" }
 ```
 
@@ -128,14 +128,14 @@ Em um aplicativo chamado **Sabão Eater**, os usuários podem participar de dife
 
 Ao interceptar uma requisição `GET`, foi possível acessar informações detalhadas sobre os grupos, incluindo o `groupId` e o nome do grupo:
 
-```
+```html
 GET /sabaoeater/v1/companies/groups/company/1234 HTTP/2
 Host: api.sabaoeater.app
 ```
 
 Utilizando a informação do `groupId`, foi possível enviar uma requisição `PATCH` para modificar indevidamente as configurações de um grupo. Por exemplo, o grupo "Jogatina de Yu-Gi-Oh" foi identificado com o `groupId` "1337". Ao alterar o `groupId` na requisição `PATCH`, foi possível modificar o nome do grupo para "Cassino do Magikarp" e trocar a imagem do logo:
 
-```
+```json
 PATCH /sabaoeater/v1/companies/1234/group HTTP/2
 Host: api.sabaoeater.app
 Content-Type: application/json
