@@ -15,7 +15,7 @@ Este artigo busca desmistifica as diferenças entre Insecure Direct Object Refer
 
 # Introdução 
 
-![dc](/img/posts/dc-01.png)
+![dc](/img/posts/dc-04.png)
 
 ## Qual a diferença entre IDOR, BAC e BOLA ? assunto complicado
 
