@@ -196,7 +196,7 @@ De acordo com o [Web Security Testing Guide (WSTG) da OWASP - Testing for Insecu
 
 **Conceito de Objeto em BOLA**:
 
-No [OWASP API Security Top 10 2023 - https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/](https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/), o termo "autorização a nível de objeto" é frequentemente abordado. Ele refere-se a um controle de acesso mais granular, onde a autorização é verificada para operações em cada objeto individual, garantindo que o usuário tenha permissão específica para interagir com o objeto em questão.
+No [OWASP API Security Top 10 2023 - API1:2023 - Broken Object Level Authorization](https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/), o termo "autorização a nível de objeto" é frequentemente abordado. Ele refere-se a um controle de acesso mais granular, onde a autorização é verificada para operações em cada objeto individual, garantindo que o usuário tenha permissão específica para interagir com o objeto em questão.
 
 # Diferença entre  IDOR, BAC e BOLA ?
 
