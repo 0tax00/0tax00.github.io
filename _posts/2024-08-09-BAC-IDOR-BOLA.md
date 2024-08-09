@@ -17,7 +17,7 @@ Este artigo busca desmistifica as diferenças entre Insecure Direct Object Refer
 
 ![dc](/img/posts/dc-01.png)
 
-**Qual a diferença entre IDOR, BAC e BOLA ? assunto complicado**
+## Qual a diferença entre IDOR, BAC e BOLA ? assunto complicado
 
 Esse é um daqueles assuntos que parece ter sido criado só para nos dar dor de cabeça. Explicar a diferença entre IDOR, BAC e BOLA é como tentar montar um quebra-cabeça sem saber se todas as peças estão na caixa. As informações estão espalhadas por aí como se fossem Pokémons, e nós temos que sair de **New Bark** para coletar várias insígnias nos GYMs antes de finalmente participar da Liga Pokémon da segurança cibernética.
 
@@ -27,7 +27,7 @@ Para abordar essa questão, iniciaremos com uma introdução à OWASP (Open Worl
 O Open Worldwide Application Security Project (OWASP) é uma organização sem fins lucrativos que fornece recursos para melhorar a segurança de aplicações. Um de seus principais recursos é o OWASP Top 10, uma lista das principais vulnerabilidades de segurança em aplicações web, que ajuda desenvolvedores a identificar e mitigar riscos críticos.
 
 
-## OWASP Top 10
+# OWASP Top 10
 
 O OWASP Top 10 é atualizado geralmente a cada três ou quatro anos, refletindo as mudanças no cenário de segurança e as contribuições da comunidade global. Exemplos de edições incluem 2003, 2004, 2007, 2010, 2013, 2017 e 2021.
 
@@ -209,7 +209,7 @@ Após explorar os conceitos de Insecure Direct Object Reference (IDOR), Broken A
 
 Em conclusão, enquanto IDOR, BAC e BOLA compartilham algumas semelhanças na facilitação de acesso não autorizado a dados, suas aplicações, escopos e soluções de mitigação diferem significativamente. Compreender essas distinções é crucial para implementar medidas de segurança eficazes e proteger sistemas contra vulnerabilidades críticas.
 
-# Referencias
+# Referências
 
 
 - [OWASP top 10 2017](https://github.com/OWASP/Top10/blob/master/2017/OWASP%20Top%2010-2017%20(en).pdf)
