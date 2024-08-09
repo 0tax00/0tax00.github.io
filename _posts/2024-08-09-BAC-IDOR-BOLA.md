@@ -105,8 +105,6 @@ Com essa alteração, o atacante pode enviar o JWT modificado para o servidor do
 
 BOLA ocorre em APIs quando os endpoints não aplicam corretamente funções ou permissões de usuário, permitindo acesso não autorizado a objetos. Isso geralmente leva à divulgação não autorizada de informações, modificação ou destruição de dados.
 
-Falhas nesse mecanismo geralmente levam à divulgação não autorizada de informações, modificação ou destruição de todos os dados.
-
 **Exemplo 01**
 
 Um exemplo básico de vulnerabilidade de Autorização de Nível de Objeto Quebrada (BOLA) pode ser visto em um sistema de gerenciamento de usuários onde diferentes níveis de permissão são atribuídos. Imagine um aplicativo que tem uma interface para gerenciar usuários, permitindo que um usuário com permissão de Gestor (manager) veja uma lista de usuários com seus respectivos níveis de permissão.
