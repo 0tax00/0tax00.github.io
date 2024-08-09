@@ -4,7 +4,6 @@ author: 0ta
 date: 2024-08-09 01:00:00 -0300
 categories: [Estudos]
 tags: [Pentest, Relatorio, Estudo]
-image: "/img/posts/dc-01.png"
 alt: "Vulnerabilidades"
 ---
 
@@ -14,10 +13,9 @@ alt: "Vulnerabilidades"
 
 Este artigo busca desmistifica as diferenças entre Insecure Direct Object Reference (IDOR), Broken Access Control (BAC) e Broken Object Level Authorization (BOLA), todas destacadas no OWASP.
 
-
 # Introdução 
 
-![dc](/img/posts/dc-01.png){ width=70% }
+![dc](/img/posts/dc-01.png)
 
 **Qual a diferença entre IDOR, BAC e BOLA ? assunto complicado**
 
