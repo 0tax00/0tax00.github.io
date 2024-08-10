@@ -34,9 +34,17 @@ O OWASP Top 10 é atualizado geralmente a cada três ou quatro anos, refletindo 
 
 Além das aplicações web, a OWASP desenvolve outros projetos voltados para diferentes contextos de segurança:
 
-- [API Security Top 10 2023](https://owasp.org/www-project-api-security/): Focado em vulnerabilidades específicas de APIs.
-- [Mobile Top 10 2024](https://owasp.org/www-project-mobile-top-10/): Voltado para segurança em aplicações móveis.
-- [OWASP Docker Top 10](https://github.com/OWASP/Docker-Security#how-to-build-pdf-version): Para segurança no uso de contêineres.
+- [OWASP Cloud-Native Application Security Top 10](https://owasp.org/www-project-cloud-native-application-security-top-10/)
+- [OWASP Desktop App Security Top 10](https://owasp.org/www-project-desktop-app-security-top-10/)
+- [OWASP Docker Top 10](https://owasp.org/www-project-docker-top-10/)
+- [OWASP Low-Code/No-Code Top 10](https://owasp.org/www-project-top-10-low-code-no-code-security-risks/)
+- [OWASP Machine Learning Security Top Ten](https://owasp.org/www-project-machine-learning-security-top-10/)
+- [OWASP Mobile Top 10](https://owasp.org/www-project-mobile-top-10/)
+- [OWASP TOP 10](https://owasp.org/www-project-top-ten/)
+- [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)
+- [OWASP Top 10 Client-Side Security Risks](https://owasp.org/www-project-top-10-client-side-security-risks/)
+- [OWASP Top 10 Privacy Risks](https://owasp.org/www-project-top-10-privacy-risks/)
+- [OWASP Serverless Top 10](https://owasp.org/www-project-serverless-top-10/)
 
 Essas listas são valiosas para desenvolvedores e profissionais de segurança, ajudando-os a entender e mitigar as principais ameaças em diferentes plataformas e tecnologias.
 
